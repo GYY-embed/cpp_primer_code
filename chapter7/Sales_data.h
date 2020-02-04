@@ -49,8 +49,14 @@ public:
 	// operations on Sales_data objects
 	std::string isbn() const { return bookNo; }
 	Sales_data& combine(const Sales_data&);
-	double avg_price() const;
-private:
+	double avg_price() const
+	{
+		if (units_sold)
+			return revenue/units_sold;
+		else
+			return 0;
+	}
+private: 	
 	std::string bookNo;
 	unsigned units_sold;
 	double revenue;
@@ -67,5 +73,13 @@ inline
 bool compareIsbn(const Sales_data &lhs, const Sales_data &rhs)
 {
 	return lhs.isbn() < rhs.isbn();
+}
+inline
+double Sales_data::avg_price() const
+{
+	if (units_sold)
+		return revenue/units_sold;
+	else
+		return 0;
 }
 #endif

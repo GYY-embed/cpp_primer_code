@@ -6,6 +6,8 @@
 
 
 class Person_data {
+friend std::ostream &print(std::ostream&, const Person_data&);
+friend std::istream &read(std::istream&, Person_data&);
 public:
     Person_data() = default;
     Person_data(std::istream &);
@@ -17,7 +19,7 @@ public:
 	std::string get_name() const { return strName; }
     std::string get_address() const { return strAddress; }
     unsigned int get_age() const { return uAge;}
-//private:
+private:
 	std::string strName;
 	std::string strAddress;
     unsigned uAge = 0;
