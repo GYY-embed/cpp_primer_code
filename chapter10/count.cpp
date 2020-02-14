@@ -23,7 +23,7 @@ int main(int argc, const char** argv)
     cout << endl;
     
     cout << "请输入一个要查询的数： ";
-    cin >> numTofind
+    cin >> numTofind;
     cout << "出线次数： " << count(v1.cbegin(), v1.cend(), numTofind) << endl;
     return 0;
 }
