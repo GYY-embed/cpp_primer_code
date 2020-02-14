@@ -36,5 +36,6 @@ int main()
 
     cout << search2(beg, end, 7) - beg << endl;
     cout << search2(beg, end, 5) - beg << endl;
+    
     return 0;
 }
