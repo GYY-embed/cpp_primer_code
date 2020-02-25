@@ -31,18 +31,20 @@ int main()
 	m1.save(f1); m3.save(f1); m5.save(f1);
 	m1.save(f2);
 	m2.save(f2); m4.save(f2); m6.save(f2);
-	
+
+        cout << "Test1 : " << endl;
 	m1.debug_print();
 	f2.debug_print();
 
 	// create some copies
 	Message c1(m1);
 	Message c2(m2), c4(m4), c6(m6);
-	
-	m1.debug_print();
-	f2.debug_print();
 
-	// now some assignments
+        cout << "Test2 : " << endl;
+	m1.debug_print();
+	f2.debug_print(); 
+
+	/* // now some assignments
 	m2 = m3;
 	m4 = m5;
 	m6 = m3;
@@ -96,7 +98,7 @@ int main()
 	Folder f3;
 	f3.save(m6);
 	cout << "capacity: " << vf.capacity() << endl;
-	vf.push_back(f3);
+	vf.push_back(f3); */
 
 
 	return 0;
