@@ -29,6 +29,7 @@ public:
         { return elements[n]; }
     const std::string &operator[](std::size_t n) const
         { return elements[n]; } 
+    StrVec& operator=(std::initializer_list<std::string> i1);
 private:
     static std::allocator<std::string> alloc;
     void chk_n_alloc()
@@ -85,6 +86,15 @@ StrVec &StrVec::operator=(const StrVec &rhs)
     elements = data.first;
     first_free = cap = data.second;
 
+    return *this;
+}
+
+StrVec& StrVec::operator=(std::initializer_list<std::string> i1)
+{
+    auto data = alloc_n_copy(i1.begin(), i1.end());
+    free();
+    elements = data.first;
+    first_free = data.second;
     return *this;
 }
 
