@@ -19,6 +19,7 @@ public:
     {
         std::cout << "bookNo = " << bookNo << " price = " << price << std::endl;
     }
+    virtual Quote* clone() const {return new Quote(*this);}
     virtual ~Quote() = default;
 private:
     std::string bookNo;
@@ -48,6 +49,7 @@ public:
     Bulk_quote(const std::string &book, double p, std::size_t qty, double disc):
         Disc_quote(book, p, qty,disc) { }
     double net_price(std::size_t) const ;
+    Bulk_quote* clone() const {return new Bulk_quote(*this);}
 /*     virtual void debug()
     {
         Quote::debug();
@@ -56,6 +58,16 @@ public:
 
 };
 
+class Lim_quote : public Disc_quote 
+{
+public:
+    Lim_quote(const std::string &book = "", double sales_price = 0.0,
+            std::size_t qty = 0, double disc_rate = 0.0):
+            Disc_quote(book, sales_price,qty,disc_rate) { }
+    
+    double net_price(std::size_t) const;
+    Lim_quote* clone() const { return new Lim_quote(*this); }
+};
 
 double print_total(std::ostream &os, const Quote &item, size_t n);
 #endif // !QUOTE_H

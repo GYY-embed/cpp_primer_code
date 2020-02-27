@@ -24,3 +24,10 @@ double print_total(std::ostream &os, const Quote &item, size_t n)
     os << "ISBN: " << item.isbn() << "# sold: " << n << "total due: " << ret << endl;
     return ret;
 }
+
+double Lim_quote::net_price(std::size_t cnt) const
+{
+    size_t discounted = min (cnt, quantity);
+    size_t undisconunted = cnt - discounted;
+    return discounted * (1 - discount) * price + undisconunted * price;
+}
